@@ -9,8 +9,8 @@ import { Address, User } from '../../Model/User';
 export class UserService {
 
   // fireBaseAuth=inject(Auth);
-  // private baseUrl="https://AadeshPharmal.somee.com/users/";
-  private baseUrl="https://localhost:7157/users";
+  private baseUrl="https://AadeshPharmal.somee.com/users/";
+  // private baseUrl="https://localhost:7157/users";
   
   constructor( private http: HttpClient) { }
 
