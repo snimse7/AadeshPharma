@@ -13,7 +13,6 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ToastModule } from 'primeng/toast';
-import { FieldsetModule } from 'primeng/fieldset';
 import { DividerModule } from 'primeng/divider';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -38,7 +37,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         DropdownModule,
         InputNumberModule,
         ToastModule,
-        FieldsetModule,
         DividerModule,
         ConfirmPopupModule,
         ProgressSpinnerModule

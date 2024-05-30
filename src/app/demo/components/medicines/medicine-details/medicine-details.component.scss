@@ -1,22 +1,72 @@
-p {
-    font-size: 16px; // Adjust font size as needed
-    line-height: 1.5; // Adjust line height for better readability
-     // Adjust text color as needed
-    margin-bottom: 10px; // Adjust margin bottom as needed
+
   
-    // Style each line as a bullet point
-    > span {
-      display: block;
+
+@media screen and (max-width: 991px) {
+  .video-container {
       position: relative;
-      padding-left: 20px; // Adjust padding left as needed
-      margin-bottom: 5px; // Adjust margin bottom as needed
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
   
-      &:before {
-        content: '\2022'; // Unicode for bullet point character
-        position: absolute;
-        left: 0;
-        color: #007bff; // Adjust bullet point color as needed
+      iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
       }
+  }
+}
+
+.spinner-container {
+  position: fixed; /* Stay fixed in viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure it spans full width */
+  height: 100%; /* Ensure it spans full height */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+  z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+p-progressSpinner {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+}
+  
+p {
+  font-size: 16px; // Adjust font size as needed
+  line-height: 1.5; // Adjust line height for better readability
+   // Adjust text color as needed
+  margin-bottom: 10px; // Adjust margin bottom as needed
+
+  // Style each line as a bullet point
+  > span {
+    display: block;
+    position: relative;
+    padding-left: 20px; // Adjust padding left as needed
+    margin-bottom: 5px; // Adjust margin bottom as needed
+
+    &:before {
+      content: '\2022'; // Unicode for bullet point character
+      position: absolute;
+      left: 0;
+      color: #007bff; // Adjust bullet point color as needed
     }
   }
-  
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.tag-item {
+  display: inline-block;
+  margin-right: 10px; /* Adjust the spacing between tags */
+}
+

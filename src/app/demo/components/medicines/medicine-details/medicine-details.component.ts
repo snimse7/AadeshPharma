@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { Medicine } from 'src/app/demo/Model/Medicine';
 import { AadeshPharmaService } from 'src/app/demo/service/aadeshPharmaServices/aadesh-pharma.service';
 import { CartService } from 'src/app/demo/service/cart.service ';
 
@@ -14,7 +15,7 @@ export class MedicineDetailsComponent {
 
   constructor(private _aadeshPharmaService:AadeshPharmaService,private activatedRoute:ActivatedRoute, private cartService:CartService){}
 
-  medicine:any;
+  medicine:Medicine=new Medicine;
   responsiveOptions: any[] | undefined;
   images: any[] =[];
 
@@ -23,6 +24,7 @@ export class MedicineDetailsComponent {
   home: MenuItem | undefined;
 
   d="";
+  progress=true;
   // l: MenuItem[] | undefined;
 menu:any;
   ngOnInit(){
@@ -31,13 +33,12 @@ menu:any;
     this.activatedRoute.params.subscribe(paramsData=>{
       let id=paramsData['id'];
       let medicineId:string =id;
-      //id=1413;
-      // medicineId="1";
       this._aadeshPharmaService.medicineDetails(medicineId).subscribe(
         (data)=>{
+          this.progress=false;
           this.medicine=data;
           this.images=data.imagesUrl;
-          console.log(data);
+          // console.log(data);
           this.d=this.medicine.medicineName;
           this.items = [
             { label: 'Medicines' ,routerLink:'/medicines'}, 
@@ -74,9 +75,6 @@ menu:any;
   
 
     this.home = { icon: 'pi pi-home', routerLink: '/landing' };
-
-    
-
   }
 
   addToCart(product: any): void {

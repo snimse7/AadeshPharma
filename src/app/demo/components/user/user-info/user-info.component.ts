@@ -46,20 +46,7 @@ export class UserInfoComponent {
         
     }
     ngOnInit(){
-        const userData = localStorage.getItem('currentUser') || "";
-        const user1=JSON.parse(userData);
-        this.userService.getUserById(user1.id).subscribe((data)=>{
-            this.user=data;
-            if(data==null){
-            this.router.navigate(['/auth/login'])
-                
-            }
-            // console.log(this.user)
-            this.progress=false;
-        },
-        (error)=>{
-            this.router.navigate(['/auth/login'])
-        })
+        this.getUser();
 
         
 
@@ -98,6 +85,7 @@ export class UserInfoComponent {
             this.userService.addAddress(this.newAddress).subscribe(data=>{
                 this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Address Addes Successfully' });
                 this.addressVisible=false;
+                this.user.address.push(this.newAddress);
                 this.newAddress=new Address();
     
             },
@@ -137,12 +125,28 @@ export class UserInfoComponent {
             accept: () => {
                 this.userService.deleteAddress(id).subscribe(data=>{
                     this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
-                    this.user.address.splice(1,1);
+                    this.getUser();
                 })
             },
             reject: () => {
                 this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
             }
         });
+    }
+    getUser(){
+        const userData = localStorage.getItem('currentUser') || "";
+        const user1=JSON.parse(userData);
+        this.userService.getUserById(user1.id).subscribe((data)=>{
+            this.user=data;
+            if(data==null){
+            this.router.navigate(['/auth/login'])
+                
+            }
+            // console.log(this.user)
+            this.progress=false;
+        },
+        (error)=>{
+            this.router.navigate(['/auth/login'])
+        })
     }
 }

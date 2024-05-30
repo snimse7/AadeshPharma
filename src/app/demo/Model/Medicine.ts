@@ -2,6 +2,7 @@ export class Medicine {
     public medicineId: string = '-1'; 
     public medicineName: string = '';
     public medicineManufactureBy: string = '';
+    public quantity:number=-0;
     public manufacturedIn: Date | null = null; 
     public expiryDate: Date | null = null; 
     public price: number = 0;

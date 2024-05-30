@@ -29,17 +29,17 @@
             </p-panel>
             <br>
 
-            <p-panel header="Address" [toggleable]="true">
+            <p-panel header="Address" [toggleable]="true" >
                 <p-button label="Add Address" class="w-full" styleClass="w-full" (click)="addressVisible=true"/>
 
-                <p-fieldset legend="Address" *ngFor="let address of user.address">
+                <div class="card"  *ngFor="let address of user.address">
                     <div class="grid" >
-                        <div class="col-12 md:col-10">
+                        <div class="col-12 md:col-9">
                             <p>{{address.address}}, {{address.city.name}}, {{address.state.name}}, {{address.country}}, {{address.zip}}</p>
                             
 
                         </div>
-                        <div class="col-12 md:col-2">
+                        <div class="col-12 md:col-3">
                             <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button p-component p-button-text " (click)="editAddress(address)"> </button>
 
                             <p-toast />
@@ -48,7 +48,8 @@
                             
                         </div>
                     </div>
-                </p-fieldset>
+                </div>
+                
             </p-panel>
         </div>
         
@@ -127,14 +128,10 @@
 
     <div class="flex align-items-center gap-3 mb-5">
         <label for="email" class="font-semibold w-6rem">Zip code</label>
-        <!-- <input pInputText id="email" class="flex-auto" autocomplete="off" [(ngModel)]="newAddress.zip"/> -->
         <p-inputNumber 
             [(ngModel)]="newAddress.zip" /> 
     </div>
 
-    
-
-    
     <div class="flex justify-content-end gap-2">
         <p-button label="Cancel" severity="secondary" (click)="addressVisible = false" />
         <p-button label="Save" (click)="addAddress()" />
@@ -143,4 +140,4 @@
 
 
 <p-toast />
-<!-- <p-button pRipple (click)="show()" label="Show" /> -->
+
