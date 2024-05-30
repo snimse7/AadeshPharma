@@ -1,0 +1,153 @@
+<div class="col-12">
+    <p-breadcrumb [model]="items" [home]="{icon: 'pi pi-home', routerLink:'/'}"></p-breadcrumb>
+</div>
+
+<div class="grid ">
+    <!-- <div class="card"> -->
+    <div class="col-12 md:col-5 ">
+        <!-- <div class="card"> -->
+        <p-carousel [value]="images" [numVisible]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+            <ng-template let-images pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 p-3">
+                    <div class="mb-3">
+                        <div class="relative mx-auto">
+                            <p-image src={{images}} alt="Image" width="250" />
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+
+        <!-- <div class="card">
+                <div class="formgroup-inline">
+                    <p>100% genuine medicines</p>
+                    <p-divider layout="horizontal" />
+                    <p>Safe & secure payments</p>
+                    <p-divider layout="horizontal" />
+                    <p>15 days Easy returns</p>
+                </div>
+            </div> -->
+
+        <!-- </div> -->
+        <!-- <div class="card"> -->
+        <h5>Tags</h5>
+
+        <div class="flex flex-wrap align-items-center" *ngFor="let chip of medicine.tags">
+            <p-chip label={{chip}} styleClass="m-1"></p-chip>
+
+        </div>
+        <!-- </div> -->
+
+    </div>
+
+    <div class="col-12 md:col-7">
+        <!-- <div class="card p-fluid"> -->
+
+        <div class="grid">
+            <div class="col-12 md:col-8">
+                <h2>{{medicine.medicineName}}</h2>
+                <h5>{{medicine.medicineManufactureBy}}</h5>
+                <h6>Pack Of 60</h6>
+                <h3> ₹ {{medicine.price}}</h3>
+                <p>*MRP inclusive of all taxes</p>
+            </div>
+
+            <div class="col-12 md:col-4">
+                <p-button (click)="op.toggle($event)" icon="pi pi-share-alt" />
+                <p-overlayPanel #op>
+                    <div class="flex flex-column gap-3 w-25rem">
+                        <div>
+                            <span class="font-medium text-900 block mb-2">Share this document</span>
+
+                            <input pInputText value="https://primeng.org/12323ff26t2g243g423g234gg52hy25XADXAG3"
+                                readonly class="w-25rem" />
+                        </div>
+
+                    </div>
+                </p-overlayPanel>
+                <br>
+                <br>
+                <button pButton label="Add to Cart" (click)="addToCart(medicine)"></button>
+            </div>
+        </div>
+        <!-- </div> -->
+
+        <!-- <div class="card p-fluid"> -->
+        <h5>Composition</h5>
+
+        <div class="flex flex-wrap gap-2" *ngFor="let composition of medicine.composition ">
+            <p-tag value={{composition}}></p-tag>
+            <br>
+            <br>
+
+        </div>
+
+        <!-- </div> -->
+
+
+
+
+        <!-- <div class="card">
+            
+        </div> -->
+    </div>
+
+    <div class="col-12">
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab header="Direction of Use">
+                <p *ngFor="let sideEffect of medicine.directionOfUse.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+                <!-- <p>
+                    {{medicine.directionOfUse}}
+                </p> -->
+            </p-accordionTab>
+            <p-accordionTab header="Route of Administration">
+                <p *ngFor="let sideEffect of medicine.routeOfAdministration.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+                <!-- <p>
+                    {{medicine.routeOfAdministration}}
+                </p> -->
+            </p-accordionTab>
+            <p-accordionTab header="Side Effects">
+                <p *ngFor="let sideEffect of medicine.sideEffects.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+
+            <p-accordionTab header="Medicine Activity">
+                <p *ngFor="let sideEffect of medicine.medicineActivity.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="Side Effects">
+                <p *ngFor="let sideEffect of medicine.sideEffects.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="Interactions">
+                <p *ngFor="let sideEffect of medicine.interactions.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="Precaution & Warning">
+                <p *ngFor="let sideEffect of medicine.precaustionAndWarning.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="Dosage">
+                <p *ngFor="let sideEffect of medicine.dosage.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+
+            <p-accordionTab header="Storage">
+                <p *ngFor="let sideEffect of medicine.storage.split('\n')">
+                    <span>{{ sideEffect }}</span>
+                </p>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+
+</div>

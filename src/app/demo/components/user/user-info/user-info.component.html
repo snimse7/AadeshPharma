@@ -1,0 +1,146 @@
+
+<div class="spinner-container" *ngIf="progress">
+    <p-progressSpinner ariaLabel="loading" />
+</div>
+
+<h1>User Profile</h1>
+<div class="grid" *ngIf="!progress">
+
+    <div class="col-12 md:col-4">
+        <p-card header="{{user.firstName}} {{user.lastName}}" subheader="@{{user.username}}" [style]="{ width: '360px' }">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <div class="flex gap-3 mt-1">
+                    <!-- <p-button label="Cancel" severity="secondary" class="w-full" styleClass="w-full" /> -->
+                    <p-button label="Edit" class="w-full" styleClass="w-full" (click)="visible=true"/>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+
+    <div class="col-12 md:col-8">
+        <div class="">
+            <p-panel header="Orders" [toggleable]="true"  >
+                <p>
+                    
+                </p>
+            </p-panel>
+            <br>
+
+            <p-panel header="Address" [toggleable]="true">
+                <p-button label="Add Address" class="w-full" styleClass="w-full" (click)="addressVisible=true"/>
+
+                <p-fieldset legend="Address" *ngFor="let address of user.address">
+                    <div class="grid" >
+                        <div class="col-12 md:col-10">
+                            <p>{{address.address}}, {{address.city.name}}, {{address.state.name}}, {{address.country}}, {{address.zip}}</p>
+                            
+
+                        </div>
+                        <div class="col-12 md:col-2">
+                            <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button p-component p-button-text " (click)="editAddress(address)"> </button>
+
+                            <p-toast />
+                            <p-confirmPopup />
+                            <button pButton pRipple type="button" icon="pi pi-trash" class="p-button p-component p-button-text " (click)="confirm2($event,address.addressId)"></button>
+                            
+                        </div>
+                    </div>
+                </p-fieldset>
+            </p-panel>
+        </div>
+        
+
+    </div>
+</div>
+
+
+<p-dialog header="Edit Profile" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary block mb-5">Update your information.</span>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="username" class="font-semibold w-6rem">Username</label>
+        <input  pInputText id="username" class="flex-auto" autocomplete="off"  disabled [(ngModel)]="user.username"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Email</label>
+        <input pInputText id="email" class="flex-auto" autocomplete="off" [(ngModel)]="user.email"/>
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">First Name</label>
+        <input pInputText id="email" class="flex-auto" autocomplete="off" [(ngModel)]="user.firstName"/>
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Last Name</label>
+        <input pInputText id="email" class="flex-auto" autocomplete="off" [(ngModel)]="user.lastName"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Admin</label>
+        <p-inputSwitch [(ngModel)]="user.isAdmin"></p-inputSwitch>
+        
+    </div>
+
+    
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+        <p-button label="Save" (click)="updateUser()" />
+    </div>
+</p-dialog>
+
+
+<p-dialog header="Add Address" [modal]="true" [(visible)]="addressVisible" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary block mb-5">Add Address</span>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="username" class="font-semibold w-6rem">Address</label>
+        <input  pInputText id="username" class="flex-auto" autocomplete="off"   [(ngModel)]="newAddress.address"/>
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Country</label>
+        <input pInputText id="email" class="flex-auto" autocomplete="off" [value]="newAddress.country" disabled/>
+
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">State</label>
+        <p-dropdown 
+    [options]="states" 
+    [(ngModel)]="newAddress.state" 
+    placeholder="Select a State" 
+    [editable]="true" 
+    optionLabel="name"
+    (onChange)="filterCity()" />
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">City</label>
+        <p-dropdown 
+    [options]="filteredCites" 
+    [(ngModel)]="newAddress.city" 
+    placeholder="Select a City" 
+    [editable]="true" 
+    optionLabel="name" />
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Zip code</label>
+        <!-- <input pInputText id="email" class="flex-auto" autocomplete="off" [(ngModel)]="newAddress.zip"/> -->
+        <p-inputNumber 
+            [(ngModel)]="newAddress.zip" /> 
+    </div>
+
+    
+
+    
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (click)="addressVisible = false" />
+        <p-button label="Save" (click)="addAddress()" />
+    </div>
+</p-dialog>
+
+
+<p-toast />
+<!-- <p-button pRipple (click)="show()" label="Show" /> -->

@@ -1,0 +1,46 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
+        <span>AadeshPharma</span>
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        
+        <!-- <i class="pi pi-shopping-cart text-3xl" pBadge value="2"></i> -->
+        <!-- <button class="p-link layout-topbar-button" badge="8" >
+            <i class="pi pi-shopping-cart"></i>
+            <span>Cart</span>
+        </button> -->
+
+        <p-button  badge={{cartVal}} style="margin-top: 7px;" [routerLink]="'/medicines/cart'"><i class="pi pi-shopping-cart" ></i> </p-button> 
+
+
+        <button class="p-link layout-topbar-button" *ngIf="logOutVisible" (click)="logOut()">
+            <i class="pi pi-sign-out"></i>
+            <span>LogOut</span>
+        </button>
+        <button class="p-link layout-topbar-button" *ngIf="!logOutVisible" (click)="logInScreen()">
+            <i class="pi pi-sign-in"></i>
+            <span>SignIn</span>
+        </button>
+        <button class="p-link layout-topbar-button" *ngIf="logOutVisible" (click)="redirectTo()">
+            <i class="pi pi-user"></i>
+            <span >Profile</span>
+        </button>
+        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
+        </button>
+
+    </div>
+</div>
+
+<p-toast />

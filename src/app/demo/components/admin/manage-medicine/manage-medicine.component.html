@@ -1,0 +1,103 @@
+
+<div class="spinner-container" *ngIf="progress">
+    <p-progressSpinner ariaLabel="loading" />
+</div>
+  <!-- <div class="card"> -->
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="grid">
+            <div class="col-12">
+                <div class="card">
+                    
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-6">
+                            <label >Medicine Name</label>
+                            <input pInputText  type="text"  formControlName="medicineName"/>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <label >Manufactured By</label>
+                            <input pInputText  type="text" formControlName="medicineManufactureBy" />
+                        </div>
+                        
+                        <div class="field col-12 md:col-6">
+                            <label >Manufactured On</label>
+                            <p-calendar [showIcon]="true" showTime="true"  placeholder="{{medicine.manufacturedIn | date}} "  formControlName="manufacturedIn" />
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <label >Expiry Date</label>
+                            <p-calendar [showIcon]="true" showTime="true"  placeholder="{{medicine.expiryDate | date}}" formControlName="expiryDate" />
+                        </div>
+                        
+                        <div class="field col-12  md:col-6">
+                            <label >Price</label>
+                            <p-inputNumber  inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="5" formControlName="price" /> 
+                        </div>
+                        
+                        <div class="field col-12  md:col-6">
+                            <label >Country Of Origin</label>
+                            <p-dropdown [options]="country"  optionLabel="name" [editable]="true" placeholder="Select a Country of Origin" value="country.name" formControlName="countryOfOrigin" /> 
+                        </div>
+                        <div class="field col-12  md:col-6">
+                            <label >Tags (Press Enter to add multiple tags)</label>
+                            <p-chips formControlName="tags"  />
+                        </div>
+                        <div class="field col-12  md:col-6">
+                            <label >Composition (Press Enter to add multiple tags)</label>
+                            <p-chips formControlName="composition"  />
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label >Direction of Use</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="directionOfUse"></textarea>
+                        </div>
+                        
+                        <div class="field col-12  md:col-6">
+                            <label >Route of Administration</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="routeOfAdministration"></textarea>
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label >Side Effects</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="sideEffects"></textarea>
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label >Medicine Activity</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="medicineActivity"></textarea>
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label >InterActions</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="interactions"></textarea>
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label >Precaution and Warning</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="precaustionAndWarning"></textarea>
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label >Dosage</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="dosage"></textarea>
+                        </div>
+
+                        <div class="field col-12  md:col-6">
+                            <label>Storage</label>
+                            <textarea rows="3" cols="30" placeholder="Your Message" pInputTextarea formControlName="storage"></textarea>
+                        </div>
+
+                        <div class="field col-12  ">
+                            <label>Images (Press Enter to add multiple tags) (Enter the URL from Web. Upload files feature sill be soon released)</label>
+                            <p-chips formControlName="imagesUrl" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </form>
+
+    <div class="field col-12 ">
+        <p-button [disabled]="!formGroup.valid" (onClick)="upsert()">Submit</p-button>
+    </div>
+
+<p-toast>
