@@ -8,16 +8,12 @@ import { Address, User } from '../../Model/User';
 })
 export class UserService {
 
-  // fireBaseAuth=inject(Auth);
   private baseUrl="https://AadeshPharmal.somee.com/users/";
-  // private baseUrl="https://localhost:7157/users";
+  // private baseUrl="https://localhost:7157/users/";
   
   constructor( private http: HttpClient) { }
 
-  register(user:User, password:string):Observable<any>{
-    // const promise=createUserWithEmailAndPassword(this.fireBaseAuth,email,password)
-    // .then(response=>updateProfile(response.user,{displayName:username}))
-
+  register(user:any, password:string):Observable<any>{
     let url=this.baseUrl+"createUser/?password="+password;
     return this.http.post(url,user);
   }

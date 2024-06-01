@@ -11,7 +11,7 @@ export class AadeshPharmaService {
 
   // fireBaseAuth=inject(Auth);
 
-private baseUrl="https://AadeshPharmal.somee.com/";
+  private baseUrl="https://AadeshPharmal.somee.com/";
   // private baseUrl="https://localhost:7157/"
   constructor( private http: HttpClient) { }
   
