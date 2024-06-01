@@ -10,7 +10,7 @@ import { CartService } from 'src/app/demo/service/cart.service ';
 })
 export class CartComponent {
 
-  cartItems:any;
+  cartItems:any[];
   cartTotal=0;
 
   constructor(private cartService:CartService,private router:Router, private messageService:MessageService){}
@@ -27,7 +27,15 @@ export class CartComponent {
   }
   removeFromCart(id:string){
     this.cartService.removeItem(id);
-    window.location.reload();
+    // window.location.reload();
+    let index=0;
+    for(let i=0;i<this.cartItems.length;i++){
+      if(this.cartItems[i].medicineId==id) {
+        index=i;
+        break;
+      }
+    }
+    this.cartItems.splice(index,1)
     this.countTotalAmt();
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product Removed Successfully' });
   }
