@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MedicineHomeRoutingModule } from './documentation-routing.module';
+import { MedicineHomeRoutingModule } from './medicines-routing.module';
 import { MedicineHomeComponent } from './medicines.component';
 import { MedicineDetailsComponent } from '../medicine-details/medicine-details.component';
 

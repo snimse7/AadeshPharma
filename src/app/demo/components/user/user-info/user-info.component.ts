@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { dA } from '@fullcalendar/core/internal-common';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Order } from 'src/app/demo/Model/Order';
 import { Address, User } from 'src/app/demo/Model/User';
 import { UserService } from 'src/app/demo/service/UserServices/user.service';
 import { AadeshPharmaService } from 'src/app/demo/service/aadeshPharmaServices/aadesh-pharma.service';
 import { CountryService } from 'src/app/demo/service/country.service';
+import { OrderService } from 'src/app/demo/service/orderService/order.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 // import {User} from 'src/app/demo/Model/User.ts';
 @Component({
@@ -29,7 +32,7 @@ export class UserInfoComponent {
     states:string[];
     cities:any[];
     filteredCites:any[];
-
+    orders:any;
     visible: boolean = false;
     addressVisible:boolean=false;
     showDialog() {
@@ -41,13 +44,17 @@ export class UserInfoComponent {
     constructor(public layoutService: LayoutService,
                 private router:Router,private userService:UserService,
                 private addressService:CountryService,private confirmationService: ConfirmationService, 
-                private messageService: MessageService)
+                private messageService: MessageService,private orderService:OrderService)
     { 
         
     }
     ngOnInit(){
         this.getUser();
 
+        this.orderService.getOrderByUser().subscribe(data=>{
+            this.orders=data;
+            console.log(data);
+        })
         
 
         this.addressService.getStates().then(states => {

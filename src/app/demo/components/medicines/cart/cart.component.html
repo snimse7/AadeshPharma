@@ -41,7 +41,9 @@
     <div class="col-12 md:col-3">
         <div class="card">
             <h5>Subtotal ( {{cartItems.length}} items): ₹ {{cartTotal}}</h5>
-            <p-button [disabled]="true">CheckOut</p-button>
+            <button pButton pRipple label="CheckOut" class="w-full p-3 text-xl" (click)="checkOut()"></button>
+
+            <!-- <p-button [disabled]="true" >CheckOut</p-button> -->
         </div>
     </div>
 </div>

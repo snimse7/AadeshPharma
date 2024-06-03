@@ -16,6 +16,7 @@ import { ToastModule } from 'primeng/toast';
 import { DividerModule } from 'primeng/divider';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TreeTableModule } from 'primeng/treetable';
 
 import { UserInfoComponent } from './user-info.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -39,7 +40,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         ToastModule,
         DividerModule,
         ConfirmPopupModule,
-        ProgressSpinnerModule
+        ProgressSpinnerModule,
+        TreeTableModule
     ],
     declarations: [UserInfoComponent],
     providers: [

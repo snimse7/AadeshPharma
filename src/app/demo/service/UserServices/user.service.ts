@@ -8,8 +8,8 @@ import { Address, User } from '../../Model/User';
 })
 export class UserService {
 
-  private baseUrl="https://AadeshPharmal.somee.com/users/";
-  // private baseUrl="https://localhost:7157/users/";
+  // private baseUrl="https://AadeshPharmal.somee.com/users/";
+  private baseUrl="https://localhost:7157/users/";
   
   constructor( private http: HttpClient) { }
 

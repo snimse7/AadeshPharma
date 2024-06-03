@@ -44,4 +44,7 @@ export class CartComponent {
       this.cartTotal+=item.price;
     })
   }
+  checkOut(){
+    this.router.navigate(['/order'])
+  }
 }

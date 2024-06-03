@@ -13,6 +13,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: 'medicines', loadChildren: () => import('./demo/components/medicines/medicines/medicines.module').then(m => m.MedicinesModule) },
                     { path: 'user', loadChildren: () => import('.//demo/components/user/user.module').then(m => m.UserModule) },
                     { path: 'admin', loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule) },
+                    { path: 'order', loadChildren: () => import('./demo/components/order/order/order.module').then(m => m.OrderModule) },
+
                 ]
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },

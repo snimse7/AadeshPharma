@@ -1,0 +1,86 @@
+<div class="card">
+    <h4>Place Order</h4>
+    <div class="grid">
+        <div class="col-12 md:col-3">
+            <div class="card">
+                <h5>Subtotal ( {{cartItems.length}} items): ₹ {{cartTotal}}</h5>
+
+                <div class="cart-item">
+                    <p-table [value]="cartItems" [paginator]="false" [rows]="5" responsiveLayout="scroll">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                                <th>Qty</th>
+                                <th>Delete</th>
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product>
+                            <tr>
+                                <td style="width: 15%; min-width: 5rem;">
+                                    <img src={{product.imagesUrl}} class="shadow-4" alt="{{product.name}}" width="50"
+                                        height="50">
+                                </td>
+                                <td style="width: 35%; min-width: 6rem;">{{product.medicineName}}</td>
+                                <td style=" min-width: 3rem;">{{product.price | currency:'INR'}}</td>
+                                <td>1</td>
+                                <td> <p-button icon="pi pi-trash" (click)="removeFromCart(product.medicineId)" /></td>
+
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 md:col-9">
+            <div class="card flex justify-content">
+                <div class="flex flex-column ">
+                    <label for="email1" class="block text-900 text-xl font-medium mb-2">Select Address</label>
+                    <div *ngFor="let address of user.address" class="field-checkbox">
+                        <p-radioButton [value]="address" [(ngModel)]="order.orderAddress" />
+
+                        <label for="ingredient2" class="ml-2">
+                            <div class="card">
+                                {{address.address}}, {{address.city.name}}, {{address.state.name}}, {{address.country}},
+                                {{address.zip}}
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card flex justify-content">
+                    <div class="flex flex-column ">
+                        <label for="email1" class="block text-900 text-xl font-medium mb-2">Mode of Payment</label>
+                        <div class="field-checkbox">
+                            <p-radioButton value="Cash On Delievry" [(ngModel)]="order.modeOfPayment" />
+                            <label for="ingredient2" class="ml-2">
+                                <div class="card">
+                                    <p>Cash On Delievry</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button pButton pRipple label="Place Order" class="w-full p-3 text-xl" (click)="placeOrder()"></button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<p-dialog header="Order  Status" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" [closable]="false">
+    <div class="container">
+        <h1>Successfully Purchased</h1>
+        <p>Order number: <span id="order-number">{{orderId  }}</span></p>
+        <div >
+            <a routerLink="/user/user-profile" class="button">Go to Console</a>
+        </div>
+    </div>
+</p-dialog>

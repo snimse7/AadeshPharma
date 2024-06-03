@@ -26,10 +26,10 @@
     width: 100%; /* Ensure it spans full width */
     height: 100%; /* Ensure it spans full height */
     background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
-    z-index: 1000; /* Ensure it is on top of other elements */
+    z-index: 1000;
 }
 
 p-progressSpinner {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
+    width: 50px; 
+    height: 50px; 
 }
