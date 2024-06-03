@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class OrderService {
 
-  private baseUrl="https://localhost:7157/"
+  private baseUrl="https://AadeshPharmal.somee.com/";
+  // private baseUrl="https://localhost:7157/";
   constructor( private http: HttpClient) { }
   //Order Services
   createOrder(order:Order):Observable<any>{
