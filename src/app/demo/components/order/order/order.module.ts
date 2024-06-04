@@ -8,8 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
+import { TimelineModule } from 'primeng/timeline';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 
 import { MessageService } from 'primeng/api';
+import { OrderDetailsHomeComponent } from '../order-details-home/order-details-home.component';
 
 
 
@@ -22,10 +26,12 @@ import { MessageService } from 'primeng/api';
         RadioButtonModule,
         ButtonModule,
         TableModule,
-        DialogModule
+        DialogModule,
+        TimelineModule,
+        ProgressSpinnerModule
         
     ],
-    declarations: [OrderComponent],
+    declarations: [OrderComponent,OrderDetailsHomeComponent],
     providers:[MessageService]
 })
 export class OrderModule { }

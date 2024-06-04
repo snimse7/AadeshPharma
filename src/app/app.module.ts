@@ -6,8 +6,6 @@ import { AppLayoutModule } from './layout/app.layout.module';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { ProductService } from './demo/service/product.service';
 import { CountryService } from './demo/service/country.service';
-import { CustomerService } from './demo/service/customer.service';
-import { NodeService } from './demo/service/node.service';
 import { CartService } from './demo/service/cart.service ';
 
 import {provideFirebaseApp,initializeApp} from '@angular/fire/app';
@@ -21,7 +19,7 @@ import { ApplicationConfig,importProvidersFrom } from "@angular/core";
     imports: [AppRoutingModule, AppLayoutModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-        CountryService, CustomerService, NodeService,CartService, ProductService,
+        CountryService,CartService, ProductService,
 
         
     ],

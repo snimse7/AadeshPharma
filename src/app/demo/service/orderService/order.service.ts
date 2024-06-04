@@ -26,7 +26,7 @@ export class OrderService {
     return this.http.post(url,order,{headers});
   }
 
-  getOrderByUser(){
+  getOrderByUser():Observable<any>{
     const userData = localStorage.getItem('currentUser') || "";
     const user1=JSON.parse(userData);
     let t=user1.token;

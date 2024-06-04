@@ -156,4 +156,7 @@ export class UserInfoComponent {
             this.router.navigate(['/auth/login'])
         })
     }
+    getMyOrders(){
+        this.router.navigate(['/order/my-orders'])
+    }
 }

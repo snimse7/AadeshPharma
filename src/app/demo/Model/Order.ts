@@ -9,6 +9,11 @@ export class Order{
     public totalAmount:number=0;
     public orderDate:Date =new Date;
     public delieveryDate?:Date | null=null; 
-    public status:string="";  
+    public events:Events[]=[];  
     public modeOfPayment:string=";"  
+}
+
+export class Events{
+    public status:string="Pending";
+    public eventDate:Date=new Date;
 }
