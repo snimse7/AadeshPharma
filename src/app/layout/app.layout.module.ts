@@ -21,6 +21,8 @@ import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 
+import { TooltipModule } from 'primeng/tooltip';
+
 @NgModule({
     declarations: [
         AppMenuitemComponent,
@@ -44,7 +46,8 @@ import { AppLayoutComponent } from "./app.layout.component";
         RouterModule,
         AppConfigModule,
         ToastModule,
-        ButtonModule
+        ButtonModule,
+        TooltipModule
     ],
     providers:[MessageService],
     exports: [AppLayoutComponent]

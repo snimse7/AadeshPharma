@@ -11,17 +11,17 @@
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
     </button>
+    
+    
+    
+    <i class="pi pi-info-circle" pTooltip="Everything in this website is dynamic. If you face any problem try logout and login back(JWT token validation). You might encounter with bugs" ></i>
+
+    
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        
-        <!-- <i class="pi pi-shopping-cart text-3xl" pBadge value="2"></i> -->
-        <!-- <button class="p-link layout-topbar-button" badge="8" >
-            <i class="pi pi-shopping-cart"></i>
-            <span>Cart</span>
-        </button> -->
-        
+      
 
-        <p-button  badge={{cartVal}} style="margin-top: 7px;" [routerLink]="'/medicines/cart'"><i class="pi pi-shopping-cart" ></i> </p-button> 
+        <p-button   badge={{cartVal}}  [routerLink]="'/medicines/cart'"><i class="pi pi-shopping-cart" ></i> </p-button> 
 
 
         <button class="p-link layout-topbar-button" *ngIf="logOutVisible" (click)="logOut()">
