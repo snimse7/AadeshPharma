@@ -95,6 +95,24 @@ export class UserService {
 
   }
 
+
+  getUserCount():Observable<any>{
+    const userData = localStorage.getItem('currentUser') || "";
+    const user1=JSON.parse(userData);
+    let t=user1.token;
+    let userId=user1.id;
+    let headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${t}`
+    });
+
+    let url=this.baseUrl+"GetUserCount";
+
+    return this.http.get(url,{headers});
+
+  }
+
+
 }
 
 

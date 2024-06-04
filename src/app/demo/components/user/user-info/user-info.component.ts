@@ -49,6 +49,11 @@ export class UserInfoComponent {
         
     }
     ngOnInit(){
+
+        if(!localStorage.getItem("currentUser")) {
+            this.router.navigate(['/auth/login'])
+          }
+
         this.getUser();
 
         this.orderService.getOrderByUser().subscribe(data=>{

@@ -39,4 +39,46 @@ export class OrderService {
     let url=this.baseUrl+"GetOrderByUserId?userId="+userId;
     return this.http.get(url,{headers});
   }
+
+  getOrderCounts():Observable<any>{
+    const userData = localStorage.getItem('currentUser') || "";
+    const user1=JSON.parse(userData);
+    let t=user1.token;
+    let userId=user1.id;
+    let headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${t}`
+    });
+
+    let url=this.baseUrl+"GetTotalOrderCount";
+    return this.http.get(url,{headers});
+  }
+
+  getTotalAmtofOrders():Observable<any>{
+    const userData = localStorage.getItem('currentUser') || "";
+    const user1=JSON.parse(userData);
+    let t=user1.token;
+    let userId=user1.id;
+    let headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${t}`
+    });
+
+    let url=this.baseUrl+"getTotalAmtofOrders";
+    return this.http.get(url,{headers});
+  }
+
+  getAllOrders():Observable<any>{
+    const userData = localStorage.getItem('currentUser') || "";
+    const user1=JSON.parse(userData);
+    let t=user1.token;
+    let userId=user1.id;
+    let headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${t}`
+    });
+
+    let url=this.baseUrl+"getAllOrders";
+    return this.http.get(url,{headers});
+  }
 }

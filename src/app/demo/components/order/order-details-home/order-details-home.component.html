@@ -12,7 +12,7 @@
                 <div class="col-12 md:col-3 ">
                     <p-timeline [value]="item.events">
                         <ng-template pTemplate="content" let-event>
-                            <small class="p-text-secondary">{{ event.eventDate | date }}</small>
+                            <small class="p-text-secondary">{{ event.eventDate | date:'short' }}</small>
                         </ng-template>
                         <ng-template pTemplate="opposite" let-event>
                             {{ event.status }}
@@ -23,7 +23,7 @@
                     <p class="order-heading">ORDER PLACED</p>
                     <p class="order-date">{{item.orderDate | date}}</p>
                     <p class="order-number">ORDER # {{ item.orderId }}</p>
-                    <p class="delivered-text" *ngIf="item.delieveryDate">Delivered {{item.delieveryDate | date}}</p>
+                    <p class="delivered-text" *ngIf="item.delieveryDate">Delivered {{item.delieveryDate | date:'short'}}</p>
                     <p> Subtotal: {{item.totalAmount | currency:'INR'}}</p>
                 </div>
                 <div class="col-12 md:col-5 ">

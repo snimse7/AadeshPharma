@@ -23,6 +23,7 @@ export class OrderDetailsHomeComponent {
 
     this.orderService.getOrderByUser().subscribe(data=>{
       this.orders=data;
+      this.orders=this.orders.reverse();
       // console.log(this.orders);
       this.loading=false;
     })

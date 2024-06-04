@@ -10,6 +10,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { TimelineModule } from 'primeng/timeline';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
 
 
 import { MessageService } from 'primeng/api';
@@ -28,7 +29,8 @@ import { OrderDetailsHomeComponent } from '../order-details-home/order-details-h
         TableModule,
         DialogModule,
         TimelineModule,
-        ProgressSpinnerModule
+        ProgressSpinnerModule,
+        ToastModule
         
     ],
     declarations: [OrderComponent,OrderDetailsHomeComponent],

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Order } from 'src/app/demo/Model/Order';
-import { User } from 'src/app/demo/Model/User';
+import { Address, User } from 'src/app/demo/Model/User';
 import { UserService } from 'src/app/demo/service/UserServices/user.service';
 import { AadeshPharmaService } from 'src/app/demo/service/aadeshPharmaServices/aadesh-pharma.service';
 import { CartService } from 'src/app/demo/service/cart.service ';
@@ -66,6 +66,12 @@ export class OrderComponent {
     }
 
     placeOrder(){
+
+        if(this.order.orderAddress==new Address){
+            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'Add/Select address. You can add in user Pnael', life: 3000 });
+            return;
+        }
+
         this.orderService.createOrder(this.order).subscribe(data=>{
             this.orderId=data;
             this.visible=true;
