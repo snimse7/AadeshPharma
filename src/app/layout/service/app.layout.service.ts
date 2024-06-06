@@ -28,7 +28,7 @@ export class LayoutService {
         inputStyle: 'outlined',
         menuMode: 'static',
         colorScheme: 'light',
-        theme: 'tailwind-light',
+        theme: 'lara-dark-teal',
         scale: 14,
     };
 
