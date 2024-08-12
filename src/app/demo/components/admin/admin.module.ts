@@ -17,8 +17,11 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { DialogModule } from 'primeng/dialog';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ManageUserHomeComponent } from './manage-users-home/manage-user-home.component';
 @NgModule({
     imports: [
         FormsModule,
@@ -36,11 +39,13 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         InputTextareaModule,
         ToastModule,
         ConfirmPopupModule,
-        ProgressSpinnerModule
+        ProgressSpinnerModule,
+        InputSwitchModule,
+        DialogModule
 
         
     ],
-    declarations: [AdminComponent,ManageMedicineComponent],
+    declarations: [AdminComponent,ManageMedicineComponent,ManageUserHomeComponent],
     providers:[MessageService,ConfirmationService]
 })
 export class AdminModule { }

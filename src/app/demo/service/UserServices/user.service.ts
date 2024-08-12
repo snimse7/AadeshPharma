@@ -9,7 +9,7 @@ import { Address, User } from '../../Model/User';
 export class UserService {
 
   private baseUrl="https://AadeshPharmal.somee.com/users/";
-  // private baseUrl="https://localhost:7157/users/";
+  //private baseUrl="https://localhost:7157/users/";
   
   constructor( private http: HttpClient) { }
 
@@ -100,7 +100,6 @@ export class UserService {
     const userData = localStorage.getItem('currentUser') || "";
     const user1=JSON.parse(userData);
     let t=user1.token;
-    let userId=user1.id;
     let headers =new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${t}`
@@ -113,6 +112,32 @@ export class UserService {
   }
 
 
+  getAllUsers():Observable<any>{
+    const userData = localStorage.getItem('currentUser') || "";
+    const user1=JSON.parse(userData);
+    let t=user1.token;
+    let headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${t}`
+    });
+
+    let url=this.baseUrl+"GetAllUsers";
+
+    return this.http.get(url,{headers});
+
+  }
+  deleteuUser(id:string):Observable<any>{
+    const userData = localStorage.getItem('currentUser') || "";
+    const user1=JSON.parse(userData);
+    let t=user1.token;
+    let headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${t}`
+    });
+
+    let url=this.baseUrl+"DeleteUser?id="+id;
+    return this.http.delete(url,{headers});
+  }
 }
 
 

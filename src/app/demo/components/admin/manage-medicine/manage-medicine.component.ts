@@ -13,7 +13,7 @@ import { CountryService } from 'src/app/demo/service/country.service';
   styleUrl: './manage-medicine.component.scss'
 })
 export class ManageMedicineComponent {
-  
+  i=true;
   medicine: Medicine = new Medicine();
 
   country: any;
